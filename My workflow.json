@@ -1,0 +1,87 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "64600f51-d666-49bc-8238-f34cd56b1efb",
+      "name": "When chat message received",
+      "webhookId": "7e14e31e-e482-41e9-b2a7-c61828d0b8f0"
+    },
+    {
+      "parameters": {
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "497cf088-f3ed-4a54-bb64-36c7f3076eb5",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        160,
+        240
+      ],
+      "id": "407920e0-4607-4be7-962d-6312a1f8780f",
+      "name": "DeepSeek Chat Model",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "9hf54crxzebHAV65",
+          "name": "Deepseek cobayu"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "DeepSeek Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d60938d0-090d-450b-9f9f-b05fdf83836a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "04e09870535818dc7431580029879379bc471d42b899d18e6d3808c329311b95"
+  },
+  "id": "YI8vjPBl4rjilAip",
+  "tags": []
+}

@@ -1,0 +1,111 @@
+{
+  "name": "gemini",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -240,
+        -112
+      ],
+      "id": "9c99123d-8b55-402b-a4cc-9c37f0d0033b",
+      "name": "When chat message received",
+      "webhookId": "9abbb592-9413-409a-acb8-7880e3aae590"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Kamu adalah asisten AI saya dengan nama SayaPintar"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        -32,
+        -112
+      ],
+      "id": "5e8e68e4-9ddd-490e-9bf2-8c568e4b96f5",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        32,
+        144
+      ],
+      "id": "90f9c655-31ab-4fb8-8075-cea191d359c8",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -144,
+        144
+      ],
+      "id": "a45d1ce1-710e-4ee0-b625-ba458bd7339e",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "tHwuhntr5QOt5CAC",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "5d930e28-b73e-487e-b8a3-ea6b1271b7e9",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "04e09870535818dc7431580029879379bc471d42b899d18e6d3808c329311b95"
+  },
+  "id": "1OxwfoxkpKMivFwq",
+  "tags": []
+}

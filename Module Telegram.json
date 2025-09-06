@@ -1,0 +1,102 @@
+{
+  "name": "Module Telegram",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "fd0cdf7b-9b94-4221-ace1-2f2d708e9967",
+      "name": "Telegram Trigger",
+      "webhookId": "94d397fd-462d-47e1-b22d-583cc39c5a9e",
+      "credentials": {
+        "telegramApi": {
+          "id": "KMLX9SZK7E7tmV1H",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.message.chat.id }}",
+        "text": "={{ $json.message.text }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "7e5d3f4d-14c5-42a2-a1f6-d83598fefbae",
+      "name": "Send a text message",
+      "webhookId": "0bcc5037-a60e-4f24-a98a-72400820b4ae",
+      "credentials": {
+        "telegramApi": {
+          "id": "KMLX9SZK7E7tmV1H",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "cobayud@gmail.com",
+        "subject": "TEST N8N",
+        "message": "Saya sedang belajar n8n",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -320,
+        0
+      ],
+      "id": "f23a0b05-1480-4306-afbe-a0f4abb621f5",
+      "name": "Send a message",
+      "webhookId": "932f2b47-1d9a-495e-a949-d996907a19c0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "iNTkblnBA81nOLCe",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e533aa60-edef-45ba-a10a-aaaf991d234d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "04e09870535818dc7431580029879379bc471d42b899d18e6d3808c329311b95"
+  },
+  "id": "5SYaXejmT1a6RwBE",
+  "tags": []
+}
